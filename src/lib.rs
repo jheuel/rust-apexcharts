@@ -13,7 +13,10 @@ mod ssr {
     }
 
     #[cfg(feature = "axum")]
-    pub fn apexcharts_js_router() -> axum::Router {
+    pub fn apexcharts_router<S>() -> axum::routing::Router<S>
+    where
+        S: Clone + Send + Sync + 'static,
+    {
         use axum::{http::HeaderMap, routing::get, Router};
 
         let headers = {
