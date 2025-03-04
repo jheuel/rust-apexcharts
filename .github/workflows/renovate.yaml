@@ -1,0 +1,23 @@
+# yamllint disable rule:line-length
+name: renovate
+on: # yamllint disable-line rule:truthy
+  schedule:
+    - cron: 0 0 * * *
+  push:
+    branches:
+      - main
+jobs:
+  renovate:
+    runs-on: [ubuntu-latest]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - name: Self-hosted Renovate
+        uses: renovatebot/github-action@02f4fdeb479bbb229caa7ad82cb5e691c07e80b3 # v41.0.14
+        with:
+          token: ${{ secrets.RENOVATE_TOKEN }}
+          env-regex: "^(?:RENOVATE_\\w+|LOG_LEVEL|GITHUB_COM_TOKEN)$"
+        env:
+          LOG_LEVEL: "info"
+          RENOVATE_PLATFORM: "github"
+          RENOVATE_REPOSITORIES: jheuel/rust-apexcharts

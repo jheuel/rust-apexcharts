@@ -1,0 +1,6 @@
+{
+  "name": "leptos_apexcharts",
+  "dependencies": {
+    "apexcharts": "^4.5.0"
+  }
+}
