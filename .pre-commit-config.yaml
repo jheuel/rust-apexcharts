@@ -20,7 +20,7 @@ repos:
       - id: taplo-format
       - id: taplo-lint
   - repo: https://github.com/adrienverge/yamllint.git
-    rev: v1.35.1
+    rev: v1.37.1
     hooks:
       - id: yamllint
         args: [--format, parsable, --strict]
